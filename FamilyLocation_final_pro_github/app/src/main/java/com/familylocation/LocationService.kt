@@ -106,19 +106,19 @@ class LocationService : Service() {
 
         fun isProviderEnabled(provider: String): Boolean = try { locationManager.isProviderEnabled(provider) } catch (_: Exception) { false }
 
+        fun finish(location: Location?) {
+            if (finished || !cont.isActive) return
+            finished = true
+            try { locationManager.removeUpdates(listener) } catch (_: Exception) {}
+            cont.resume(location) {}
+        }
+
         fun candidate(location: Location?) {
             if (location == null || finished || !cont.isActive) return
             if (!isFresh(location) || !location.hasAccuracy()) return
             best = betterOf(best, location)
             val b = best
             if (b != null && b.accuracy <= GOOD_ACCURACY_METERS) finish(b)
-        }
-
-        fun finish(location: Location?) {
-            if (finished || !cont.isActive) return
-            finished = true
-            try { locationManager.removeUpdates(listener) } catch (_: Exception) {}
-            cont.resume(location) {}
         }
 
         fun finishAtTimeout() {
