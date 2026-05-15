@@ -1,0 +1,20 @@
+手机无电脑打包 APK 说明
+
+这个包已经加好 GitHub Actions 自动打包配置。
+默认飞书机器人地址已设置为：
+https://open.feishu.cn/open-apis/bot/v2/hook/8731bf5d-87c8-400f-836f-3dd3c159a6f2
+
+手机操作：
+1. 用手机浏览器打开 github.com 并登录。
+2. 新建仓库，名字随便，例如 FamilyLocationBuild。
+3. 上传本文件夹里的全部文件到仓库根目录。
+4. 点仓库上方 Actions。
+5. 点 Build Android APK。
+6. 点 Run workflow。
+7. 等待绿色对勾。
+8. 打开完成的任务，在 Artifacts 里下载 FamilyLocation-feishu-time-debug-apk。
+9. 下载后如果是 zip，解压，里面的 app-debug.apk 就是安装包。
+10. 发 QQ 或直接在手机安装。
+
+注意：飞书机器人关键词建议设置为：位置
+签名校验关闭，IP 白名单关闭。
